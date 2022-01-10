@@ -105,7 +105,7 @@ theme_set(theme_cbep())
 
 # Color Palette
 
-For seasonal displays This is just a lists, not a function.
+For seasonal displays. This is just a list, not a function.
 
 ``` r
 season_palette = c(cbep_colors()[1],
@@ -233,7 +233,7 @@ system.time(pco2_gam <- gam(co2_corr_res ~  s(hh, by = Season, bs='cc'),
 ```
 
     ##    user  system elapsed 
-    ##    0.30    0.02    0.31
+    ##    0.23    0.02    0.27
 
 ``` r
 summary(pco2_gam)
@@ -275,7 +275,7 @@ system.time(pco2_gam_b <- gam(co2_corr_res ~  Season + s(hh, by = Season, bs='cc
 ```
 
     ##    user  system elapsed 
-    ##    0.15    0.02    0.17
+    ##    0.11    0.02    0.12
 
 ``` r
 summary(pco2_gam_b)
@@ -330,10 +330,10 @@ gam.check(pco2_gam)
     ## indicate that k is too low, especially if edf is close to k'.
     ## 
     ##                      k'  edf k-index p-value
-    ## s(hh):SeasonWinter 8.00 4.09    1.02    0.94
-    ## s(hh):SeasonSpring 8.00 4.06    1.02    0.90
-    ## s(hh):SeasonSummer 8.00 6.12    1.02    0.92
-    ## s(hh):SeasonFall   8.00 6.29    1.02    0.94
+    ## s(hh):SeasonWinter 8.00 4.09    1.01    0.61
+    ## s(hh):SeasonSpring 8.00 4.06    1.01    0.60
+    ## s(hh):SeasonSummer 8.00 6.12    1.01    0.63
+    ## s(hh):SeasonFall   8.00 6.29    1.01    0.62
 
 ### Autocorrelation
 
@@ -701,7 +701,7 @@ system.time(ph_gam <- gam(ph_res ~  s(hh, by = Season, bs='cc'),
 ```
 
     ##    user  system elapsed 
-    ##    0.09    0.00    0.10
+    ##    0.08    0.00    0.07
 
 ``` r
 summary(ph_gam)
@@ -743,7 +743,7 @@ system.time(ph_gam_b <- gam(ph_res ~  Season + s(hh, by = Season, bs='cc'),
 ```
 
     ##    user  system elapsed 
-    ##    0.13    0.00    0.13
+    ##    0.09    0.02    0.11
 
 ``` r
 summary(ph_gam_b)
@@ -866,7 +866,7 @@ We also tried running a GAMM with an autocorrelation function set up to
 depend on an hourly time stamp, but it, too took too much memory, and
 crashed.
 
-The simple autocorrelation function , which looks for correlations with
+The simple autocorrelation function, which looks for correlations with
 successive observations (ignoring any recorded time coordinates), would
 be identical to one based on a time stamp, IF there were no missing
 values.
